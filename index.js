@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-
+const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.use(express.json());
+app.use(cors());
 
  
 
@@ -128,6 +129,6 @@ async function geniusCar(){
 }
 
 geniusCar().catch(console.dir);
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log("Listen Port", port)
 })
