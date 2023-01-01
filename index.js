@@ -60,7 +60,7 @@ async function geniusCar(){
 
 
 
-    app.get('/', async (req, res) => {
+    app.get('/services', async (req, res) => {
         const query = {};
         const serviceItem = serviceCollection.find(query);
         const result = await serviceItem.toArray();
