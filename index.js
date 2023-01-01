@@ -100,7 +100,7 @@ async function geniusCar(){
         }
     })
 
-    app.delete('n/services/:id', async (req, res) => {
+    app.delete('/services/:id', async (req, res) => {
         const item = req.params.id;
         const query = {_id: ObjectId(item)};
         const result = await serviceCollection.deleteOne(query);
