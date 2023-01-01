@@ -9,13 +9,14 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Genisur Car Service = Sarver is Running...')
-});
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nxph8s3.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+app.get('/', (req, res) => {
+    res.send('Genisur Car Service = Sarver is Running...')
+});
 
 
 function verifyJWT(req, res, next){
@@ -59,7 +60,7 @@ async function geniusCar(){
 
 
 
-    app.get('/services', async (req, res) => {
+    app.get('/', async (req, res) => {
         const query = {};
         const serviceItem = serviceCollection.find(query);
         const result = await serviceItem.toArray();
@@ -106,7 +107,7 @@ async function geniusCar(){
         res.send(result);
     })
 
-    app.put('/services', async (req, res) => {
+    app.put('   ', async (req, res) => {
         const itemid = req.body.serviceid;
         const item = req.body.item;
         const filter = {_id: ObjectId(itemid)};
